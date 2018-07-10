@@ -21,4 +21,4 @@ const RatingSchema = new Schema({
   }
 },{collection:"Rating",timestamps:true})
 
-export default mongoose.model('Rating',RaitingSchema);
+export default mongoose.model('Rating',RatingSchema);

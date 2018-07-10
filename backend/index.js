@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import User from './src/models/users';
 import {createToken,verifyToken} from './src/resolvers/create';
 
+import graphQLHTTP from 'express-graphql';
+import schema from './src/graphql'; 
+
 
 const app = express();
 const PORT = process.env.PORT || 3000
@@ -43,6 +46,12 @@ app.post('/login', (req, res)=>{
 app.get('/', (req,res) => {
   res.send("Estoy funcionando :)");
 })
+
+app.use('/graphql',graphQLHTTP((req,res)=> ({
+  schema,
+  graphiql:true,
+  pretty:true
+})))
 
 app.listen(PORT, ()=> {
   console.log(`Magic happens in port ${PORT}`);

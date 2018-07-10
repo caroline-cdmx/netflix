@@ -1,9 +1,11 @@
 import {
   GraphQLInputObjectType,
   GraphQLString,
+  GraphQLType,
   GraphQLID,
   GraphQLObjectType,
   GraphQLNonNull,
+  GraphQLBoolean,
   GraphQLFloat
 } from 'graphql'
 
@@ -27,7 +29,7 @@ export const MovieType = new GraphQLObjectType({
       type:GraphQLString
     },
     genre:{
-      type:GraphQLType,
+      type:GenreType,
       resolve(movie){
         // const genre = movie.genre pareil que const {genre} = movie
         const {genre} = movie
