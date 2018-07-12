@@ -30,7 +30,7 @@ export const RatingType = new GraphQLObjectType({
   })
 });
 
-export const RatingsInputType = new GraphQLInputObjectType({
+export const RatingInputType = new GraphQLInputObjectType({
   name: "AddRatings",
   description: "Agrega, modifica nuevas clasifaciones a la bd",
   fields: () => ({

@@ -6,7 +6,8 @@ import {
   GraphQLObjectType,
   GraphQLNonNull,
   GraphQLBoolean,
-  GraphQLFloat
+  GraphQLFloat,
+  GraphQLList
 } from 'graphql'
 
 import {GenreType, GenresInputType} from './genres';
@@ -33,7 +34,7 @@ export const MovieType = new GraphQLObjectType({
       resolve(movie){
         // const genre = movie.genre pareil que const {genre} = movie
         const {genre} = movie
-        return GenresInputType.findById(genre).exec()
+        return Genre.findById(genre).exec()
       }
     },
     url:{
@@ -46,7 +47,7 @@ export const MovieType = new GraphQLObjectType({
       type:GraphQLString
     },
     rate:{
-      type:GraphQLFloat
+      type:GraphQLList(GraphQLFloat)
     },
     rating:{
       type:RatingType,
@@ -65,7 +66,7 @@ export const MovieType = new GraphQLObjectType({
   })
 });
 
-export const MoviesInputType = new GraphQLInputObjectType({
+export const MovieInputType = new GraphQLInputObjectType({
   name: "addMovies",
   description: "Agrega, modifica peliculas a la bd",
   fields: () => ({
@@ -76,11 +77,7 @@ export const MoviesInputType = new GraphQLInputObjectType({
       type:GraphQLString
     },
     genre:{
-      type:GraphQLString,
-      resolve(movie){
-        const {genre} = movie
-        return GenresInputType.findById(genre).exec()
-      }
+      type:GraphQLString
     },
     url:{
       type:GraphQLString
@@ -92,11 +89,18 @@ export const MoviesInputType = new GraphQLInputObjectType({
       type:GraphQLString
     },
     rating:{
-      type:RatingType,
-      resolve(movie) {
-        const {rating} = movie
-        return RatingType.findById(rating).exec()
-      }
+      type:GraphQLString
+    
+    }
+  })
+})
+
+export const RateMovieType = new GraphQLInputObjectType({
+  name:"addRate",
+  description:"Agrega rate a Movie",
+  fields: () => ({
+    rate: {
+      type: GraphQLFloat
     }
   })
 })

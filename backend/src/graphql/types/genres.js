@@ -26,13 +26,10 @@ export const GenreType = new GraphQLObjectType({
   })
 });
 
-export const GenresInputType = new GraphQLInputObjectType({
+export const GenreInputType = new GraphQLInputObjectType({
   name: "AddGenres",
   description: "Agrega, modifica nuevos generos a la bd",
   fields: () => ({
-    _id:{
-      type:GraphQLNonNull(GraphQLID)
-    },
     name:{
       type:GraphQLString
     },

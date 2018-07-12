@@ -3,7 +3,8 @@ import {
   GraphQLString,
   GraphQLID,
   GraphQLObjectType,
-  GraphQLNonNull
+  GraphQLNonNull,
+  GraphQLBoolean
 } from 'graphql'
 
 import User from '../../models/users';
@@ -54,7 +55,7 @@ export const UserInputType = new GraphQLInputObjectType({
       type:GraphQLString
     },
     password:{
-      typeGraphQLString
+      type:GraphQLString
     },
     email:{
       type:GraphQLString
