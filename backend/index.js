@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import User from './src/models/users';
-import {createToken,verifyToken} from './src/resolvers/create';
+import {createToken} from './src/resolvers/create';
 import {verifyToken} from './src/resolvers/verify'
 
 import graphQLHTTP from 'express-graphql';
