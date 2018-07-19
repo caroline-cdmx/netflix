@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Signup from './components/signup/Signup';
+import Routes from './Routes';
+import Nav from './components/nav/Nav';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Signup/>
+        <Nav/>
+        <Routes/>
       </div>
     );
   }
