@@ -3,8 +3,8 @@ import './style.css';
 import signup from '../../services/signup';
 
 class Signup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       firstName: '',
       lastName: '',
@@ -26,7 +26,7 @@ class Signup extends Component {
     if (password === verify_password) {
       return true
     } else {
-      alert('Tu password no coincide');
+      this.props.history.push('/login')
     }
   }
 
