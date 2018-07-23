@@ -41,17 +41,17 @@ class Login extends Component {
         <div className='col-md-10 col-lg-8'>
           <form onSubmit={this.submitForm}>
             <div className="form-group">
-              <label for="exampleInputEmail1">Correio electrónico</label>
+              <label htmlFor="exampleInputEmail1">Correio electrónico</label>
               <input type="email" className="form-control" name="email" value={this.state.email} onChange={this.onInputCheck} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrar email"/>
               <small id="emailHelp" className="form-text text-muted">No compartimos tu email</small>
             </div>
             <div className="form-group">
-              <label for="exampleInputPassword1">Contraseña</label>
+              <label htmlFor="exampleInputPassword1">Contraseña</label>
               <input type="password" className="form-control" name="password" value={this.state.password} onChange={this.onInputCheck} id="exampleInputPassword1" placeholder="Contraseña"/>
             </div>
             <div className="form-check">
                 <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                <label className="form-check-label" for="exampleCheck1">Check me out</label>
+                <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
             </div>
               <button type="submit" className="btn btn-primary">Iniciar sesión</button>
           </form>

@@ -53,7 +53,7 @@ export const MovieType = new GraphQLObjectType({
       type:RatingType,
       resolve(movie) {
         const {rating} = movie
-        return RatingType.findById(rating).exec()
+        return Rating.findById(rating).exec()
       }
     },
     is_active:{

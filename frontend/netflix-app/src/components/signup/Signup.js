@@ -6,7 +6,7 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
+      name: '',
       lastName: '',
       email: '',
       password: '',
@@ -58,7 +58,7 @@ class Signup extends Component {
                   <div className="row">
                     <div className="col-xs-6 col-sm-6 col-md-6">
                       <div className="form-group">
-                        <input type="text" name="firstname" id="firstname" className="form-control input-sm" placeholder="Apellido" value={this.state.firstname}
+                        <input type="text" name="name" id="name" className="form-control input-sm" placeholder="Apellido" value={this.state.name}
                           onChange={this.onInputCheck} />
                       </div>
                     </div>

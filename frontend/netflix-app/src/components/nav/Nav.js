@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './style.css';
 import {Link} from 'react-router-dom';
-import payload from '../../resolvers/checkToken';
+import payload from '../../resolvers/payload';
+import checkToken from '../../resolvers/checkToken';
+
 
 class Nav extends Component {
   constructor() {

@@ -9,17 +9,18 @@ import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
 import Logout from './components/logout/Logout';
 import Movies from './components/movies/Movies';
+import Movie from './components/movie/Movie';
 import checkToken from './resolvers/checkToken';
 
 class Routes extends Component {
-
-  PrivateRoute = ({component:Component,...rest}) => {
-    <Route {...rest} render = {()=>(
-      checkToken () === true ? <Component {...props}/> : <Redirect to="/login"/> 
-      )}/>
-  }
   
   render () {
+    
+    const PrivateRoute = ({component:Component,...rest}) => (
+      <Route {...rest} render = {(props)=>(
+        checkToken () === true ? <Component {...props}/> : <Redirect to="/login"/> 
+        )}/>
+    )
     return (
       <Router>
         <main>
@@ -27,8 +28,9 @@ class Routes extends Component {
           <Route exact path='/' component ={Home}/>
           <Route exact path='/login' component ={Login}/>
           <Route exact path='/signup' component ={Signup}/>
-          <Route exact path='/logout' component= {Logout}/>
-          <Route exact path='/movies' component= {Movies}/>
+          <PrivateRoute exact path='/logout' component= {Logout}/>
+          <PrivateRoute exact path='/movies' component={Movies}/>
+          <PrivateRoute exact path=':movie/:id' component={Movie}/>
         </main>
       </Router>
 
