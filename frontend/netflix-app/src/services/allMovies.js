@@ -22,7 +22,8 @@ export default () => {
               name
             },
             year,
-            url
+            url,
+            rate
           }
         }
       `

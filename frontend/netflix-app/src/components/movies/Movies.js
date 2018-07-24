@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import allMovies from '../../services/allMovies';
 import './style.css'
-
+import Rate from 'rc-rate';
+import addRate from '../../services/addRate';
+import CardMovie from '../cardMovie/CardMovie';
 
 
 class Movies extends Component {
@@ -24,18 +26,32 @@ class Movies extends Component {
     })
 
   }
+  redirect= (id) => {
+    this.props.history.push(`/movie/${id}`)
+  }
+
+  getRateValue = (id,rate) => {
+    addRate({id,rate}).then((resp)=> {
+      console.log(resp)
+    })
+  }
 
   renderMovies = () => {
     console.log(this.state)
     if (this.state.movies !== "") {
       let movies = this.state.movies.map((movie, index) => {
         return (
-          <div className="card" style={{ width: "14rem;" }} key={index}>
-            <h5 className="card-title">{movie.name}</h5>
-            <div className="card-body">
-              <p className="card-text">{movie.plot}</p>
-            </div>
-          </div>
+          <CardMovie movie={movie} redirect={this.redirect}
+            getRate={this.getRateValue}
+          />
+          // <div className="card" style={{ width: "14rem;" }} key={index}>
+          //   <h5 className="card-title"
+          //   onClick={()=> this.props.history.push(`/movie/${movie._id}`)}>{movie.name}</h5>
+          //   <div className="card-body">
+          //     <p className="card-text">{movie.plot}</p>
+          //     <Rate defaultValue={2.5} allowHalf onChange={(rate)=> this.getRateValue(movie._id,rate)}/>
+          //   </div>
+          // </div>
         )
       })
       return movies
