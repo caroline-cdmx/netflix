@@ -56,12 +56,15 @@ var MovieType = exports.MovieType = new _graphql.GraphQLObjectType({
       rate: {
         type: (0, _graphql.GraphQLList)(_graphql.GraphQLFloat)
       },
+      image_url: {
+        type: _graphql.GraphQLString
+      },
       rating: {
         type: _ratings.RatingType,
         resolve: function resolve(movie) {
           var rating = movie.rating;
 
-          return _ratings.RatingType.findById(rating).exec();
+          return _ratings3.default.findById(rating).exec();
         }
       },
       is_active: {
@@ -90,6 +93,9 @@ var MovieInputType = exports.MovieInputType = new _graphql.GraphQLInputObjectTyp
         type: _graphql.GraphQLString
       },
       url: {
+        type: _graphql.GraphQLString
+      },
+      image_url: {
         type: _graphql.GraphQLString
       },
       director: {

@@ -19,7 +19,7 @@ var SALT_WORK_FACTOR = 10;
 var Schema = _mongoose2.default.Schema;
 
 var userSchema = new Schema({
-  firstName: {
+  name: {
     type: String,
     required: true
   },
